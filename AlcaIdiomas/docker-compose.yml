@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - SUPABASE_URL=https://nyzuzxnmpwtjqjfrxjau.supabase.co
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55enV6eG5tcHd0anFqZnJ4amF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwMjgyOTgsImV4cCI6MjA2MzYwNDI5OH0.0MFLXsKwrRNQjMEDm2Pz1dTCi6Q93qCJ3_E7wiS4sws
+
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+
+volumes:
+  pgdata:
